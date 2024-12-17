@@ -103,9 +103,9 @@ function handleRewards($conn, $bottle_count) {
 
     mysqli_stmt_close($stmt);
 }
-
 // Handle bottle data updates
-function handleBottleData($conn, $bottle_data) {
+function handleBottleData($conn) {
+    $bottle_data = 1;  // Ensure bottle count is always 1 for each insert
     $sql = "INSERT INTO bottle_data (bottle_count, timestamp) VALUES (?, NOW())";
     $stmt = mysqli_prepare($conn, $sql);
 
@@ -123,4 +123,3 @@ function handleBottleData($conn, $bottle_data) {
 
     mysqli_stmt_close($stmt);
 }
-?>

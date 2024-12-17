@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
     if (empty($user_id) || empty($password)) {
         $_SESSION['status'] = "Please enter both User ID and Password!";
         $_SESSION['status_type'] = "danger";
-        header("Location: login.php");
+        header("Location: index.php");
         exit(0);
     }
 
@@ -29,23 +29,22 @@ if (isset($_POST['login'])) {
             // Start the session and set user data
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['name'] = $user['name'];
-            $_SESSION['email'] = $user['email'];
 
             // Redirect to the dashboard
             $_SESSION['status'] = "Login successful!";
             $_SESSION['status_type'] = "success";
-            header("Location: dashboard.php");
+            header("Location: pages/dashboard.php");
             exit(0);
         } else {
             $_SESSION['status'] = "Incorrect password!";
             $_SESSION['status_type'] = "danger";
-            header("Location: login.php");
+            header("Location: index.php");
             exit(0);
         }
     } else {
         $_SESSION['status'] = "User ID not found!";
         $_SESSION['status_type'] = "danger";
-        header("Location: login.php");
+        header("Location: index.php");
         exit(0);
     }
 }
